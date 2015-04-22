@@ -1,25 +1,28 @@
-<h1>Your TODO list:</h1>
+<h1>Your TODO list: <%= link_to "Add Item", new_todo_path, :class => "btn btn-lg btn-primary" %></h1>
 <hr>
 <h2>TODO:</h2>
-
+  <table class="center">
 <% @todos.each do |t| %>
 
-   <p style="color:red">
-     <strong> <%= t.name %></strong>
-     <small><%= link_to "Mark as Done", todo_path(t), {:class => "btn btn-xs btn-primary", :method => :put} %></small>
+       <tr>
+	 <td class="table_rows todo_items">
+	   <strong> <%= t.name %></strong>
+	 </td>
 
-   </p>
+	 <td><%= link_to "Mark as Done", todo_path(t), {:class => "btn btn-xs btn-primary", :method => :put} %></td>
+       </tr>
 <% end %>
+</table>
 <hr>
 <h2>DONE:</h2>
 
+<table class="center">
 <% @todone.each do |t| %>
-
-   <p style="color:green">
-     <strong> <%= t.name %></strong>
-     <small><%= link_to "Remove", t,{:confirm => "Is it ok to remove this from the list?", :class => "btn btn-xs btn-primary", :method => :delete} %></small>
-
-   </p>
+    <tr>
+      <td class="table_rows done_items"><strong> <%= t.name %></strong></td>
+     <td><%= link_to "Remove", t,{:confirm => "Is it ok to remove this from the list?", :class => "btn btn-xs btn-primary", :method => :delete} %></td>
+   </tr>
 <% end %>
+</table>
 <hr>
-<p> <%= link_to "Add an item to the list", new_todo_path, :class => "btn btn-xs btn-primary" %></p>
+
