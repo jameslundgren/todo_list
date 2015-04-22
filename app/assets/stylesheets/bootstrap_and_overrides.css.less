@@ -46,11 +46,21 @@ body{
 
 .jumbotron {
 	   text-align: center;
-	   color: grey;
+ 	   color: gray;
 }
 
+.jumbotron a{
+	   text-align: center;
+ 	   color: white;
+}
+
+
+.jumbotron h1 { color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 75px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
+
 .btn-primary{
-	background-color: black; 
+	background-color: black;
+	border: none;
+	coloe: white; 
 }
 
 .btn-primary:hover{
@@ -59,12 +69,17 @@ body{
 }
 
 h1{
-	padding: 10px; 
+	padding: 10px;
+	font-size: 50px; 
 }
 
 h4{
 	padding-top: 20px;
 	font-size: 80%;  
+}
+
+hr{
+	border-top: 3px solid #2C2C2C;
 }
 
 .text-fields{
@@ -99,11 +114,15 @@ input[type=submit]:hover{
 
 }
 
-//
-//		 _______     _____       _________
-//		/______/|   / __  \ \    | _   \ _\
-//	       |_______|/  | /  \  |-|   | | \  | |
-//	          | ||     | |  |  | |   | | |  | |
-//	          | ||     | |  |  | |   | | |  | |
-//	          | ||     | \__/  |_|   | |_/  |_|
-//	          |_|/ 	    \_____/_/    |_____/_/
+#content {
+	border-radius: 6px;
+	border: none;
+	background-color: #E6E6E6; 
+	padding: 20px;
+	color: black;
+	font-weight: bold; 
+}
+
+#content > a {
+	 color: gray;
+}

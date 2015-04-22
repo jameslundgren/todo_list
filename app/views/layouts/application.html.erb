@@ -16,17 +16,18 @@
 <% else %>
    <h1> Todo Application </h1>
    <%= link_to "Sign up", new_user_registration_path, {:class => "btn-lg btn-primary"} %>  <%= link_to "Sign in", new_user_session_path, {:class => "btn-lg btn-primary"}%>
-   <h4> Created by James Lundgren and Victor Marrufo</h4>
+  
 
 <% end %>
 
 </div>
+<div id="content">
 <% flash.each do |name, message| %>
    <%= content_tag :div, message, :id => "flash_#{name}" %>
 <% end %>
 
 <%= yield %>
-
+ <h4> Created by James Lundgren and Victor Marrufo</h4>
 </div>
 </body>
 </html>

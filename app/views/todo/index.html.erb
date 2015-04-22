@@ -1,23 +1,25 @@
 <h1>Your TODO list:</h1>
+<hr>
 <h2>TODO:</h2>
 
 <% @todos.each do |t| %>
 
-   <p>
+   <p style="color:red">
      <strong> <%= t.name %></strong>
      <small><%= link_to "Mark as Done", todo_path(t), {:class => "btn btn-xs btn-primary", :method => :put} %></small>
 
    </p>
 <% end %>
+<hr>
 <h2>DONE:</h2>
 
 <% @todone.each do |t| %>
 
-   <p>
+   <p style="color:green">
      <strong> <%= t.name %></strong>
      <small><%= link_to "Remove", t,{:confirm => "Is it ok to remove this from the list?", :class => "btn btn-xs btn-primary", :method => :delete} %></small>
 
    </p>
 <% end %>
-
+<hr>
 <p> <%= link_to "Add an item to the list", new_todo_path, :class => "btn btn-xs btn-primary" %></p>
