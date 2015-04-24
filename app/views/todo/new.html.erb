@@ -1,8 +1,21 @@
+<% 
+=begin
+Authors: James Lundgre, Victor Marrufo
+Date: April 23, 2015
+Source code based off of tutorial found at https://www.youtube.com/watch?v=fr8u3l6RWOQ
+
+View for adding a new item to the list. Provides a field for 
+the user to type in the task, and a button to submit it. 
+=end
+%>
+
+
+
 <h1>Add new item to your todo list</p>
 
 <%= form_for @todo, :url => todo_index_path(@todo) do |f| %>
     <%= f.label :name %>: <%= f.text_field :name, {:class => "text-fields"}%>
     <%= f.hidden_field :done, :value => false %>
-    <%= f.submit "Add to todo list", {:class => "btn btn-lg btn-primary"} %>
+    <%= f.submit "Add to todo list", {:class => "btn btn-lg btn-primary", :id => "submit_todo"} %>
 
 <% end %>

@@ -1,18 +1,31 @@
-class TodoController < ApplicationController
+=begin
+Authors: James Lundgre, Victor Marrufo
+Date: April 23, 2015
+Source code based off of tutorial found at https://www.youtube.com/watch?v=fr8u3l6RWOQ
 
+Controller for the todo list functionality. 
+=end
+
+
+class TodoController < ApplicationController
+  
+  # Variables for items that have been completed and haven't been completed
   def index 
     @todos = Todo.where(user_id: current_user.id, done: false)
     @todone= Todo.where(user_id: current_user.id, done: true)
   end
 
+  # Used when a new task is added to the todo list
   def new 
     @todo = Todo.new
   end
  
+  # paramaters for a todolist item (name and status boolean)
   def todo_params
     params.require(:todo).permit(:name, :done)
   end
 
+  # Associates a todo task with a specific user when it is created
   def create
     @todo = Todo.new(todo_params)
     @todo.user = current_user
@@ -24,6 +37,7 @@ class TodoController < ApplicationController
     end
   end
 
+  # Used when an items status is updated
   def update
     @todo = Todo.find(params[:id])
     
@@ -34,7 +48,7 @@ class TodoController < ApplicationController
     end
   end
 
-
+  # used to remove a todo item from the page
   def destroy
     @todo = Todo.find(params[:id])
     @todo.destroy

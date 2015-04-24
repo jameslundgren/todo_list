@@ -1,5 +1,22 @@
-<h1>Your TODO list: <%= link_to "Add Item", new_todo_path, :class => "btn btn-lg btn-primary" %></h1>
+<% 
+=begin
+Authors: James Lundgre, Victor Marrufo
+Date: April 23, 2015
+Source code based off of tutorial found at https://www.youtube.com/watch?v=fr8u3l6RWOQ
+
+This page is the view for the todo page. Every item that is associated with the user that logged in 
+is shown. The state of the items are stored in the database as a boolean, and this boolean lets us 
+show the items based off of whether they have been marked as complete or not. 
+=end 
+%>
+
+<h1>
+  Your TODO list: 
+  <%= link_to "Add Item", new_todo_path, {:class => "btn btn-lg btn-primary", :id => "add_item_btn"} %>
+</h1>
+
 <hr>
+
 <h2>TODO:</h2>
   <table class="center">
 <% @todos.each do |t| %>
@@ -9,18 +26,24 @@
 	   <strong> <%= t.name %></strong>
 	 </td>
 
-	 <td><%= link_to "Mark as Done", todo_path(t), {:class => "btn btn-xs btn-primary", :method => :put} %></td>
+	 <td>
+	   <%= link_to "Mark as Done", todo_path(t), {:class => "btn btn-xs btn-primary", :method => :put} %>
+	 </td>
        </tr>
 <% end %>
 </table>
+
 <hr>
+
 <h2>DONE:</h2>
 
 <table class="center">
 <% @todone.each do |t| %>
     <tr>
       <td class="table_rows done_items"><strong> <%= t.name %></strong></td>
-     <td><%= link_to "Remove", t,{:confirm => "Is it ok to remove this from the list?", :class => "btn btn-xs btn-primary", :method => :delete} %></td>
+      <td>
+	<%= link_to "Remove", t,{:confirm => "Is it ok to remove this from the list?", :class => "btn btn-xs btn-primary", :method => :delete} %>
+      </td>
    </tr>
 <% end %>
 </table>

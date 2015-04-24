@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="author" content="James Lundgren, Victor Marrufo">
+  <meta name="description" content="A simple todo application. Last modified April 24th 2015">
   <title>Todo Application</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -9,20 +11,27 @@
 <body>
 <div class="container">
    <div class="center jumbotron">
-<% if user_signed_in? %>
-   You are currently signed in as <%= current_user.email %>, not you?
-   <%= link_to "Sign out", destroy_user_session_path, {:method => :delete, :class => "btn btn-sm btn-primary"}  %>
+     <% # Check to see if the user is signed in. If they are, give them option to 
+	# sign out
+	if user_signed_in? 
+     %>
+     You are currently signed in as <%= current_user.email %>, not you?
+     <%= link_to "Sign out", destroy_user_session_path, {:method => :delete, :class => "btn btn-sm btn-primary", :id => "sign_out"}  %>
 
-<% else %>
-   <h1> Todo Application </h1>
-   <%= link_to "Sign up", new_user_registration_path, {:class => "btn-lg btn-primary"} %>  <%= link_to "Sign in", new_user_session_path, {:class => "btn-lg btn-primary"}%>
+     <%  # User hasn't signed in, give them the option to sign in or sign up
+         else 
+     %>
+     <h1> Todo Application </h1>
+     <%= link_to "Sign up", new_user_registration_path, {:class => "btn-lg btn-primary", :id =>"sign_up_btn"} %>  <%= link_to "Sign in", new_user_session_path, {:class => "btn-lg btn-primary", :id => "sign_in_btn"}%>
   
-
 <% end %>
 
 </div>
+
 <div id="content">
-<% flash.each do |name, message| %>
+<% # The login information is generated here. 
+
+   flash.each do |name, message| %>
    <%= content_tag :div, message, :id => "flash_#{name}" %>
 <% end %>
 
